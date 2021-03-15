@@ -25,6 +25,12 @@ public class TopLevelActivity extends AppCompatActivity {
                             DrinkCategoryActivity.class);
                     startActivity(intent);
                 }
+                else if (position == 1){
+
+                }
+                else if (position == 2){
+
+                }
             }
         };
 
