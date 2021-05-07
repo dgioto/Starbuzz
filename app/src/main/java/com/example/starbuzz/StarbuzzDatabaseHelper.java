@@ -10,7 +10,7 @@ import androidx.annotation.Nullable;
 public class StarbuzzDatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DB_NAME = "starbuzz";
-    private static final int DB_VERSION = 1;
+    private static final int DB_VERSION = 2;
 
     public StarbuzzDatabaseHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -18,15 +18,7 @@ public class StarbuzzDatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        //создание таблицы DRINK
-        db.execSQL("CREATE TABLE DRINK (_id INTEGER PRIMARY KEY AUTOINCREMENT, "
-             + "NAME TEXT, "
-             + "DESCRIPTION TEXT, "
-             + "IMAGE_RESOURCE_ID INTEGER);");
-        //данные каждого напитка вставляются в отдельной строке
-        insertDrink(db, "Latte", "Espresso and steamed milk", R.drawable.latte);
-        insertDrink(db, "Cappuccino", "Espresso, hot milk and steamed-milk foam", R.drawable.cappuccino);
-        insertDrink(db, "Filter", "Our best drip coffee", R.drawable.filter);
+       updateMyDatabase(db, 0, DB_VERSION);
     }
 
     //метод для вставки одной строки таблицы БД
@@ -41,6 +33,23 @@ public class StarbuzzDatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        updateMyDatabase(db, oldVersion, newVersion);
+    }
 
+    private void updateMyDatabase(SQLiteDatabase db, int oldVersion, int newVersion){
+        if (oldVersion < 1) {
+            //создание таблицы DRINK
+            db.execSQL("CREATE TABLE DRINK (_id INTEGER PRIMARY KEY AUTOINCREMENT, "
+                    + "NAME TEXT, "
+                    + "DESCRIPTION TEXT, "
+                    + "IMAGE_RESOURCE_ID INTEGER);");
+            //данные каждого напитка вставляются в отдельной строке
+            insertDrink(db, "Latte", "Espresso and steamed milk", R.drawable.latte);
+            insertDrink(db, "Cappuccino", "Espresso, hot milk and steamed-milk foam", R.drawable.cappuccino);
+            insertDrink(db, "Filter", "Our best drip coffee", R.drawable.filter);
+        }
+        if (oldVersion < 2){
+
+        }
     }
 }
