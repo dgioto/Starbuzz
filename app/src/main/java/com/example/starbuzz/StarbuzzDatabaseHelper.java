@@ -55,14 +55,7 @@ public class StarbuzzDatabaseHelper extends SQLiteOpenHelper {
                     R.drawable.filter);
         }
         if (oldVersion < 2){
-            //объект с описанием обновляемых данных
-            ContentValues drinkValues = new ContentValues();
-            drinkValues.put("DESCRIPTION", "Tasty");
-            //Значение Latte подставляется вместо ? в конструкции NAME = ?
-            db.update("DRINK",
-                    drinkValues,
-                    "NAME = ?",
-                    new String[] {"Latte"});
+            db.execSQL("ALTER TABLE DRINK ADD COLUMN FAVORITE NUMERIC;");
         }
     }
 }
