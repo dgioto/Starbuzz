@@ -44,12 +44,25 @@ public class StarbuzzDatabaseHelper extends SQLiteOpenHelper {
                     + "DESCRIPTION TEXT, "
                     + "IMAGE_RESOURCE_ID INTEGER);");
             //данные каждого напитка вставляются в отдельной строке
-            insertDrink(db, "Latte", "Espresso and steamed milk", R.drawable.latte);
-            insertDrink(db, "Cappuccino", "Espresso, hot milk and steamed-milk foam", R.drawable.cappuccino);
-            insertDrink(db, "Filter", "Our best drip coffee", R.drawable.filter);
+            insertDrink(db, "Latte",
+                    "Espresso and steamed milk",
+                    R.drawable.latte);
+            insertDrink(db, "Cappuccino",
+                    "Espresso, hot milk and steamed-milk foam",
+                    R.drawable.cappuccino);
+            insertDrink(db, "Filter",
+                    "Our best drip coffee",
+                    R.drawable.filter);
         }
         if (oldVersion < 2){
-
+            //объект с описанием обновляемых данных
+            ContentValues drinkValues = new ContentValues();
+            drinkValues.put("DESCRIPTION", "Tasty");
+            //Значение Latte подставляется вместо ? в конструкции NAME = ?
+            db.update("DRINK",
+                    drinkValues,
+                    "NAME = ?",
+                    new String[] {"Latte"});
         }
     }
 }
