@@ -58,6 +58,8 @@ public class DrinkActivity extends AppCompatActivity {
                 photo.setContentDescription(nameText);
 
             }
+            cursor.close();
+            db.close();
 
         } catch (SQLException e){
             Toast toast = Toast.makeText(this,
