@@ -2,6 +2,7 @@ package com.example.starbuzz;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
@@ -78,6 +79,28 @@ public class DrinkActivity extends AppCompatActivity {
     }
 
     public void onFavoriteClicked(View view) {
-        
+        int drinkId = (Integer) getIntent().getExtras().get(EXTRA_DRINKID);
+
+        //Получение значения флажка
+        CheckBox favorite = findViewById(R.id.favorite);
+        ContentValues drinkValues = new ContentValues();
+        //значение флажка добавляем в в объект ContentValues
+        drinkValues.put("FAVORITE", favorite.isChecked());
+
+        //получение ссылки на базу данных и обновление столбца FAVORITE
+        SQLiteOpenHelper starbuzzDatabaseHelper = new StarbuzzDatabaseHelper(this);
+        try {
+            SQLiteDatabase db = starbuzzDatabaseHelper.getWritableDatabase();
+            //Обновить столбец FAVORITE текущим значением флажка
+            db.update("DRINK",
+                    drinkValues,
+                    "_id = ?",
+                    new String[]{Integer.toString(drinkId)});
+            db.close();
+        } catch (SQLException e){
+            Toast toast = Toast.makeText(this,
+                    "Database unavailable",
+                    Toast.LENGTH_SHORT);
+        }
     }
 }
