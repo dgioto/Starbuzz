@@ -7,6 +7,9 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.Checkable;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,7 +34,7 @@ public class DrinkActivity extends AppCompatActivity {
             //создаем курсор для получегия из таблицы DRINK  столбцов NAME, DESCRIPTION,
             //IMAGE_RESOURCE_ID тех записей у которых значение _id равно drinkId
             Cursor cursor = db.query("DRINK",
-                    new String[] {"NAME", "DESCRIPTION", "IMAGE_RESOURCE_ID"},
+                    new String[] {"NAME", "DESCRIPTION", "IMAGE_RESOURCE_ID", "FAVORITE"},
                     "_id = ?",
                     new String[]{Integer.toString(drinkId)},
                     null, null, null);
@@ -43,6 +46,8 @@ public class DrinkActivity extends AppCompatActivity {
                 String nameText = cursor.getString(0);
                 String descriptionText = cursor.getString(1);
                 int photoId = cursor.getInt(2);
+                //Если столбец FAVORITE содержит 1, это соответствует значению true
+                boolean isFavorite = (cursor.getInt(3) == 1);
 
                 //Заполнение названия напитка
                 TextView name = findViewById(R.id.name);
@@ -57,6 +62,9 @@ public class DrinkActivity extends AppCompatActivity {
                 photo.setImageResource(photoId);
                 photo.setContentDescription(nameText);
 
+                //Заполнение флажка любого напитка
+                CheckBox favorite = findViewById(R.id.favorite);
+                favorite.setChecked(isFavorite);
             }
             cursor.close();
             db.close();
@@ -67,5 +75,9 @@ public class DrinkActivity extends AppCompatActivity {
                     Toast.LENGTH_SHORT);
             toast.show();
         }
+    }
+
+    public void onFavoriteClicked(View view) {
+        
     }
 }
