@@ -14,12 +14,20 @@ public class TopLevelActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_top_level);
+        
+        //вызов нового метода
+        setupOptionsListView();
+    }
 
+    private void setupOptionsListView() {
         //создание объект слушателя
-        AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
+        AdapterView.OnItemClickListener itemClickListener =
+                new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> listView, View itemView, int position, long id) {
                 if (position == 0){
+                    //Если пользователь выбрал Drink в списковом представлении list_options,
+                    // открыть активность DrinkCategoryActivity
                     Intent intent = new Intent(
                             TopLevelActivity.this,
                             DrinkCategoryActivity.class);
