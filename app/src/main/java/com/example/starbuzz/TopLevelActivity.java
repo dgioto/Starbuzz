@@ -96,6 +96,23 @@ public class TopLevelActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onRestart() {
+        super.onRestart();
+        //создаем новую версию курсора
+        Cursor newCursor = db.query("DRINK",
+                new String[]{"_id", "NAME"},
+                "FAVORITE = 1",
+                null, null, null, null);
+        ListView listFavorites = findViewById(R.id.list_favorites);
+        CursorAdapter adapter = (CursorAdapter) listFavorites.getAdapter();
+        //курсор используемый list_favorites, заменяется новім курсором
+        adapter.changeCursor(newCursor);
+        //значение favoritesCursor заменяется новым курсором, чтобы его можно было закрыть в методе
+        //onDestroy() активности
+        favoritesCursor = newCursor;
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         favoritesCursor.close();
