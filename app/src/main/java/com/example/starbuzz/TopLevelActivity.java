@@ -1,5 +1,6 @@
 package com.example.starbuzz;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -8,6 +9,7 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.CursorAdapter;
@@ -42,28 +44,43 @@ public class TopLevelActivity extends AppCompatActivity {
 //        imgMail = findViewById(R.id.action_mail);
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+
         bottomNavigationView.setOnNavigationItemSelectedListener(
-                (item) ->{
-                    switch (item.getItemId()){
-                        case R.id.action_map:
+                new BottomNavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        switch (item.getItemId()){
+                            case R.id.action_map:
 //                            imgMap.setVisibility(View.VISIBLE);
 //                            imgDial.setVisibility(View.GONE);
 //                            imgMail.setVisibility(View.GONE);
-                            break;
-                        case R.id.action_dial:
+                                Intent intent = new Intent(
+                                        TopLevelActivity.this,
+                                        DrinkCategoryActivity.class);
+                                startActivity(intent);
+                                break;
+                            case R.id.action_dial:
 //                            imgMap.setVisibility(View.GONE);
 //                            imgDial.setVisibility(View.VISIBLE);
 //                            imgMail.setVisibility(View.GONE);
-                            break;
-                        case R.id.action_mail:
+                                Intent intent1 = new Intent(
+                                        TopLevelActivity.this,
+                                        DrinkCategoryActivity.class);
+                                startActivity(intent1);
+                                break;
+                            case R.id.action_mail:
 //                            imgMap.setVisibility(View.GONE);
 //                            imgDial.setVisibility(View.GONE);
 //                            imgMail.setVisibility(View.VISIBLE);
-                            break;
+                                Intent intent2 = new Intent(
+                                        TopLevelActivity.this,
+                                        DrinkCategoryActivity.class);
+                                startActivity(intent2);
+                                break;
+                        }
+                        return false;
                     }
-                    return false;
-                }
-        );
+                });
     }
 
     private void setupOptionsListView() {
