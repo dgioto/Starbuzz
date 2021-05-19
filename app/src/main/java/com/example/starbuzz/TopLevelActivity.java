@@ -11,14 +11,20 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.CursorAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class TopLevelActivity extends AppCompatActivity {
 
     private SQLiteDatabase db;
     private Cursor favoritesCursor;
+
+    //add BottomNavigationView
+//    private ImageView imgMap, imgDial, imgMail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +35,35 @@ public class TopLevelActivity extends AppCompatActivity {
         setupOptionsListView();
 
         setupFavoritesListView();
+
+        //add BottomNavigationView
+//        imgMap = findViewById(R.id.action_map);
+//        imgDial = findViewById(R.id.action_dial);
+//        imgMail = findViewById(R.id.action_mail);
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener(
+                (item) ->{
+                    switch (item.getItemId()){
+                        case R.id.action_map:
+//                            imgMap.setVisibility(View.VISIBLE);
+//                            imgDial.setVisibility(View.GONE);
+//                            imgMail.setVisibility(View.GONE);
+                            break;
+                        case R.id.action_dial:
+//                            imgMap.setVisibility(View.GONE);
+//                            imgDial.setVisibility(View.VISIBLE);
+//                            imgMail.setVisibility(View.GONE);
+                            break;
+                        case R.id.action_mail:
+//                            imgMap.setVisibility(View.GONE);
+//                            imgDial.setVisibility(View.GONE);
+//                            imgMail.setVisibility(View.VISIBLE);
+                            break;
+                    }
+                    return false;
+                }
+        );
     }
 
     private void setupOptionsListView() {
