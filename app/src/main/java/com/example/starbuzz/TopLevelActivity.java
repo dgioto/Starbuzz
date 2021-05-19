@@ -26,7 +26,7 @@ public class TopLevelActivity extends AppCompatActivity {
     private Cursor favoritesCursor;
 
     //add BottomNavigationView
-//    private ImageView imgMap, imgDial, imgMail;
+    private ImageView imgMap, imgDial, imgMail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +39,9 @@ public class TopLevelActivity extends AppCompatActivity {
         setupFavoritesListView();
 
         //add BottomNavigationView
-//        imgMap = findViewById(R.id.action_map);
-//        imgDial = findViewById(R.id.action_dial);
-//        imgMail = findViewById(R.id.action_mail);
+        imgMap = findViewById(R.id.img_map);
+        imgDial = findViewById(R.id.img_dail);
+        imgMail = findViewById(R.id.img_mail);
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
@@ -51,31 +51,19 @@ public class TopLevelActivity extends AppCompatActivity {
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                         switch (item.getItemId()){
                             case R.id.action_map:
-//                            imgMap.setVisibility(View.VISIBLE);
-//                            imgDial.setVisibility(View.GONE);
-//                            imgMail.setVisibility(View.GONE);
-                                Intent intent = new Intent(
-                                        TopLevelActivity.this,
-                                        DrinkCategoryActivity.class);
-                                startActivity(intent);
+                                imgMap.setVisibility(View.VISIBLE);
+                                imgDial.setVisibility(View.GONE);
+                                imgMail.setVisibility(View.GONE);
                                 break;
                             case R.id.action_dial:
-//                            imgMap.setVisibility(View.GONE);
-//                            imgDial.setVisibility(View.VISIBLE);
-//                            imgMail.setVisibility(View.GONE);
-                                Intent intent1 = new Intent(
-                                        TopLevelActivity.this,
-                                        DrinkCategoryActivity.class);
-                                startActivity(intent1);
+                                imgMap.setVisibility(View.GONE);
+                                imgDial.setVisibility(View.VISIBLE);
+                                imgMail.setVisibility(View.GONE);
                                 break;
                             case R.id.action_mail:
-//                            imgMap.setVisibility(View.GONE);
-//                            imgDial.setVisibility(View.GONE);
-//                            imgMail.setVisibility(View.VISIBLE);
-                                Intent intent2 = new Intent(
-                                        TopLevelActivity.this,
-                                        DrinkCategoryActivity.class);
-                                startActivity(intent2);
+                                imgMap.setVisibility(View.GONE);
+                                imgDial.setVisibility(View.GONE);
+                                imgMail.setVisibility(View.VISIBLE);
                                 break;
                         }
                         return false;

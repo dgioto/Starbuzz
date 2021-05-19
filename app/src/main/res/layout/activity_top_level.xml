@@ -16,6 +16,38 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/starbuzzlogo" />
 
+    <ImageView
+        android:id="@+id/img_map"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_map_24" />
+
+    <ImageView
+        android:id="@+id/img_mail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="24dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_mail_outline_24" />
+
+    <ImageView
+        android:id="@+id/img_dail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="24dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_dialpad_24" />
+
     <ListView
         android:id="@+id/list_options"
         android:layout_width="0dp"
@@ -56,7 +88,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        app:itemBackground="@color/cardview_dark_background"
+        app:itemBackground="@color/gray"
         app:itemIconTint="@color/bottom_navigation_item_background_colors"
         app:itemTextColor="@color/bottom_navigation_item_background_colors"
         app:menu="@menu/menu_bottom_navigation"
