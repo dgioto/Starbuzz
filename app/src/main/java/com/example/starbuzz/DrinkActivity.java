@@ -11,7 +11,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
-import android.widget.Checkable;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -94,7 +93,7 @@ public class DrinkActivity extends AppCompatActivity {
         protected void onPreExecute() {
             //Получение значения флажка
             CheckBox favorite = findViewById(R.id.favorite);
-            ContentValues drinkValues = new ContentValues();
+            drinkValues = new ContentValues();
             //значение флажка добавляем в в объект ContentValues
             drinkValues.put("FAVORITE", favorite.isChecked());
         }
