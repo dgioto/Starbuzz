@@ -24,7 +24,8 @@
         android:layout_marginEnd="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_baseline_map_24" />
+        app:srcCompat="@drawable/ic_baseline_map_24"
+        android:contentDescription="img_map" />
 
     <ImageView
         android:id="@+id/img_mail"
@@ -35,7 +36,8 @@
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_baseline_mail_outline_24" />
+        app:srcCompat="@drawable/ic_baseline_mail_outline_24"
+        android:contentDescription="img_mail" />
 
     <ImageView
         android:id="@+id/img_dail"
@@ -46,7 +48,8 @@
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_baseline_dialpad_24" />
+        app:srcCompat="@drawable/ic_baseline_apps_24"
+        android:contentDescription="img_dail" />
 
     <ListView
         android:id="@+id/list_options"
@@ -58,9 +61,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView">
-
-    </ListView>
+        app:layout_constraintTop_toBottomOf="@+id/imageView"/>
 
     <TextView
         android:id="@+id/textView2"
